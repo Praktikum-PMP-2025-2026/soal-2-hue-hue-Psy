@@ -15,13 +15,13 @@
 
 #define MAX_LENGTH 100
 
-int menghitungkurungTambahan(const char *segel) {
-    int kurungBuka = 0; 
-    int kurungTambahan = 0; 
+int menghitungkurungTambahan(const char *segel) {  //Fungsi untuk menghitung kurung tambahan yang diperlukan agar string valid
+    int kurungBuka = 0;  //Variabel untuk menghitung kurung buka dalam string input
+    int kurungTambahan = 0;   //Variabel untuk menghitung kurung yang diperlukan agar semua string input berpasangan
     for (int i=0; segel[i] != '\0'; i++) {
-        if (segel[i] == '(') {
+        if (segel[i] == '(') {  //Jika karakter saat ini adalah '(', maka jumlah kurungBuka bertambah 1
             kurungBuka++; 
-        } else if (segel[i] == ')') {
+        } else if (segel[i] == ')') {  //jika karakter saat ini adalah ')', maka jumlah kurungBuka berkurang 1 dan jika jumlah kurungBuka = 0, maka kurungTambahan bertambah 1 untuk melengkapi ')' dengan '('
             if (kurungBuka > 0) {
                 kurungBuka--;
             } else {
@@ -29,14 +29,21 @@ int menghitungkurungTambahan(const char *segel) {
             }
         }
     }
-    kurungTambahan += kurungBuka;
+    kurungTambahan += kurungBuka;  //Jika masih ada '(' yang belum berpasangan, maka jumlah kurungBuka ditambahkan ke kurungTambahan untuk melengkapi '(' dengan ')'
     return kurungTambahan;
 }
 
 int main () {
     char segel [MAX_LENGTH];
-    scanf("%s", segel);
-    int tambahan = menghitungkurungTambahan(segel);
+    scanf("%s", *segel); //Membaca input string dari pengguna dan menyimpan string dalam array segel
+    int tambahan = menghitungkurungTambahan(*segel);
     printf("%d\n", tambahan);
     return 0;
 }
+
+
+
+
+//https://www.geeksforgeeks.org/dsa/how-do-dynamic-arrays-work/
+//https://levelup.gitconnected.com/learning-c-arithmetic-operators-and-assignment-operators-8731efbf1b0e
+//https://www.geeksforgeeks.org/c/how-to-create-a-dynamic-array-of-strings-in-c/
