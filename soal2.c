@@ -35,8 +35,8 @@ int menghitungkurungTambahan(const char *segel) {  //Fungsi untuk menghitung kur
 
 int main () {
     char segel [MAX_LENGTH];
-    scanf("%s", *segel); //Membaca input string dari pengguna dan menyimpan string dalam array segel
-    int tambahan = menghitungkurungTambahan(*segel);
+    scanf("%s", segel); //Membaca input dari pengguna lalu menyimpannya dalam array segel
+    int tambahan = menghitungkurungTambahan(segel);
     printf("%d\n", tambahan);
     return 0;
 }
